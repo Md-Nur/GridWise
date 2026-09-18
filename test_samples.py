@@ -1,19 +1,23 @@
 #!/usr/bin/env python3
-"""
-Test runner for GridWise public sample cases.
-Tests all 10 sample cases against the /optimize-energy endpoint,
-verifying API contract, directive interpretation, physical constraints,
-and optimization cost quality.
-"""
+import os
+import sys
+
+# If run with a python interpreter missing required dependencies,
+# automatically switch to local .venv if present
+venv_python = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".venv", "bin", "python")
+if os.path.exists(venv_python) and os.path.abspath(sys.executable) != os.path.abspath(venv_python):
+    try:
+        import pydantic  # noqa: F401
+    except ImportError:
+        os.execv(venv_python, [venv_python] + sys.argv)
 
 import argparse
 import json
-import os
-import sys
 import time
 from typing import Dict, Any
 
 from app.models import OptimizeEnergyRequest, OptimizeEnergyResponse, BatteryInput, DirectiveInterpretation
+
 from app.replayer import replay_and_verify_schedule, recalculate_metrics
 
 

@@ -1,5 +1,6 @@
 fastapi>=0.115.0
 uvicorn[standard]>=0.30.0
+gunicorn>=22.0.0
 pydantic>=2.8.0
 pulp>=2.9.0
 google-genai>=1.0.0
