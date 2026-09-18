@@ -1,0 +1,20 @@
+[project]
+name = "gridwise"
+version = "0.1.0"
+description = "BUP CSE Fest 2026 GridWise LLM-Assisted Smart Campus Energy Optimization Service"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.30.0",
+    "pydantic>=2.8.0",
+    "pulp>=2.9.0",
+    "google-genai>=1.0.0",
+    "python-dotenv>=1.0.0",
+    "httpx>=0.28.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+]
